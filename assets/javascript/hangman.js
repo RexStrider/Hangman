@@ -17,6 +17,8 @@ let index = 0;
 
 let hiddenWord = [];
 
+let lettersGuessed = [];
+
 // sets up the stats for hangman
 function initializeGame() {
     let wordElement = document.getElementById("word");
@@ -33,28 +35,40 @@ function initializeGame() {
 
 // renders the word in the browser after every key press
 document.addEventListener("keyup", event => {
+    console.log(event.key);
+
+    let eventKey = event.key.toLowerCase();
+
+    // the letter has not been guessed
+    if (eventKey.length === 1 && isAlpha(eventKey) && lettersGuessed.indexOf(eventKey) < 0) {
+
+        lettersGuessed.push(eventKey);
+        console.log("pushed key " + eventKey + " to the letters guessed array");
+        document.getElementById("guessed-letters").textContent = lettersGuessed.join(" ");
+
+        if (word.indexOf(eventKey) > -1) {
     
-    if (word.indexOf(event.key) > -1) {
+            for (let i in word) {
+                if (word.charAt(i) === eventKey) {
+                    hiddenWord[i] = word.charAt(i);
+                    console.log("index " + i + " character " + word.charAt(i));
+                }
+            }
+    
+            document.getElementById("word").textContent = hiddenWord.join(" ");
 
-        // loop through the array
-        // for each character in the array
-        // replace the hidden character with the key pressed
-
-        for (let i in word) {
-            if (word.charAt(i) === event.key) {
-                hiddenWord[i] = word.charAt(i);
-                console.log("index " + i + " character " + word.charAt(i));
+            if (hiddenWord.indexOf("_") < 0) {
+                document.getElementById("win-text").textContent = "Congratulations, you win!";
             }
         }
-
-        document.getElementById("word").textContent = hiddenWord.join(" ");
-
-        if (hiddenWord.indexOf("_") < 0) {
-            document.getElementById("win-text").textContent = "Congratulations, you win!";
-        }
     }
+
+    
 });
 
+function isAlpha(letter) {
+    return /[a-zA-Z]/.test(letter);
+}
 
 initializeGame();
 // console.log(words);
