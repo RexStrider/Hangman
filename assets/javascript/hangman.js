@@ -12,15 +12,22 @@ let words = [
     "onomatopoeia"
 ];
 
+let intervalId;
+
 let word = "";
 let index = 0;
 
-let hiddenWord = [];
+let hiddenWord;
 
-let lettersGuessed = [];
+let lettersGuessed;
 
 // sets up the stats for hangman
 function initializeGame() {
+    clearInterval(intervalId);
+    
+    hiddenWord = [];
+    lettersGuessed = [];
+
     let wordElement = document.getElementById("word");
 
     index = Math.floor(Math.random() * words.length);
@@ -31,6 +38,10 @@ function initializeGame() {
     }
 
     wordElement.textContent = hiddenWord.join(" ");
+
+    document.getElementById("guessed-letters").textContent = "";
+    document.getElementById("win-text").textContent = "";
+    document.getElementById("new-game-text").textContent = "";
 }
 
 // renders the word in the browser after every key press
@@ -59,6 +70,9 @@ document.addEventListener("keyup", event => {
 
             if (hiddenWord.indexOf("_") < 0) {
                 document.getElementById("win-text").textContent = "Congratulations, you win!";
+
+                document.getElementById("new-game-text").textContent = "A new game will start in just a moment";
+                intervalId = setInterval(initializeGame, 5 * 1000);
             }
         }
     }
