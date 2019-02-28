@@ -62,7 +62,6 @@ function initializeGame() {
     document.getElementById("guessed-letters").textContent = "";
     document.getElementById("win-text").textContent = "";
     document.getElementById("new-game-text").textContent = "";
-    document.getElementById("win-score").textContent = "wins: " + wins;
 }
 
 // renders the word in the browser after every key press
@@ -101,6 +100,7 @@ document.addEventListener("keyup", event => {
 
                 // tally the win
                 wins++;
+                document.getElementById("win-score").textContent = "wins: " + wins;
 
                 // congratulate the user
                 document.getElementById("win-text").textContent = "Congratulations, you win!";
