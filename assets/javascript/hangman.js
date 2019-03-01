@@ -55,7 +55,7 @@ function initializeGame() {
         hiddenWord.push("_");
     }
 
-    // display the hidden word to the screen
+    // display the hidden word on the main web page
     wordElement.textContent = hiddenWord.join(" ");
 
     // re-initializes the game text on the main web page
