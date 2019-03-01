@@ -19,8 +19,9 @@ let word = "";
 // index of the selected word
 let index = 0;
 
-// number of times the player has won the game
+// number of times the player has won or lost the game
 let wins = 0;
+let loses = 0;
 
 // the selected word, but all characters will be replaced with '_'
 let hiddenWord;
@@ -28,20 +29,24 @@ let hiddenWord;
 // an array of all of the characters the user has selected durring the current session
 let lettersGuessed;
 
+// number of letters guessed wrong
+let wrongGuesses;
+
 // used to keep track of the automatic timed reset after the game is finished
-let intervalId;
+let intervalId = null;
 
 // audio file to play when the user selects the correct letter
 let audio = new Audio("assets/sounds/temple-bell.mp3");
 
 // starts the game
 function initializeGame() {
-    // makes sure the game stops reseting
+    // makes sure the game stops resetting
     clearInterval(intervalId);
     
-    // clears the hidden word and letters guessed during a previous session
+    // clears the hidden word, letters guessed and wrong guesses during a previous session
     hiddenWord = [];
     lettersGuessed = [];
+    wrongGuesses = 0;
 
     // retrieve the element that will display the hidden word
     let wordElement = document.getElementById("word");
@@ -62,6 +67,15 @@ function initializeGame() {
     document.getElementById("guessed-letters").textContent = "";
     document.getElementById("win-text").textContent = "";
     document.getElementById("new-game-text").textContent = "";
+
+    // makes the man invisible
+    for (let i = 0; i < 6; i++) {
+        let bodypart = ["head", "body", "left_hand", "right_hand", "left_foot", "right_foot"][i];
+        document.getElementById(bodypart).style.display = "none";
+    }
+
+    // set the intervalId no null, to note that the game has initialized
+    intervalId = null;
 }
 
 // renders the word in the browser after every key press
@@ -70,15 +84,8 @@ document.addEventListener("keyup", event => {
     // normalizes the input to lower case
     let eventKey = event.key.toLowerCase();
 
-    // determines if the key pressed was part of the alphabet, and if the key has not been guessed yet, otherwise we ignore the key event
-    if (eventKey.length === 1 && isAlpha(eventKey) && lettersGuessed.indexOf(eventKey) < 0) {
-
-        // push the key to the list of guessed letters
-        lettersGuessed.push(eventKey);
-        console.log("pushed key " + eventKey + " to the letters guessed array");
-
-        // display the guessed letters to the web page
-        document.getElementById("guessed-letters").textContent = lettersGuessed.join(" ");
+    // determines if the key pressed was part of the alphabet, and if the key has not been guessed yet, otherwise we ignore the key event. also checks that there is no on-going interval to prevent extra guesses
+    if (eventKey.length === 1 && isAlpha(eventKey) && lettersGuessed.indexOf(eventKey) < 0 && intervalId == null) {
 
         // determines if the key pressed is in the word
         if (word.indexOf(eventKey) > -1) {
@@ -111,7 +118,38 @@ document.addEventListener("keyup", event => {
                 // start the game in 5 seconds
                 intervalId = setInterval(initializeGame, 5 * 1000);
             }
+        } else if (wrongGuesses < 6) {
+
+            // display the next bodypart
+            let bodypart = ["head", "body", "left_hand", "right_hand", "left_foot", "right_foot"][wrongGuesses];
+            document.getElementById(bodypart).style.display = "inline";
+
+            wrongGuesses++;
+
+            // determines if the player loses
+            if (wrongGuesses == 6) {
+
+                // tally the lose
+                loses++;
+                document.getElementById("lose-score").textContent = "loses: " + loses;
+
+                // boo the user
+                document.getElementById("win-text").textContent = "You lose, boo!";
+
+                // inform them that a new game will be starting soon
+                document.getElementById("new-game-text").textContent = "A new game will start in just a moment";
+                
+                // start the game in 5 seconds
+                intervalId = setInterval(initializeGame, 5 * 1000);
+            }
         }
+
+        // push the key to the list of guessed letters
+        lettersGuessed.push(eventKey);
+        console.log("pushed key " + eventKey + " to the letters guessed array");
+
+        // display the guessed letters to the web page
+        document.getElementById("guessed-letters").textContent = lettersGuessed.join(" ");
     }
 
 });

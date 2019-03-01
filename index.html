@@ -13,8 +13,21 @@
     <p id="guessed-letters"></p>
     <h2 id="win-text"></h2>
     <p id="win-score"></p>
+    <p id="lose-score"></p>
     <p id="new-game-text"><p>
-
+    <svg width="150" height="250">
+        <line x1="7"   y1="220" x2="138" y2="220" stroke="black" stroke-width="10px"></line>
+        <line x1="120" y1="215" x2="120" y2="16"  stroke="black" stroke-width="10px"></line>
+        <line x1="51"  y1="21"  x2="115" y2="21"  stroke="black" stroke-width="10px"></line>
+        <line x1="54"  y1="23"  x2="54"  y2="52"  stroke="black" stroke-width="2px"></line>
+    
+        <circle id="head"       cx="54" cy="69"  r="16"  fill="none" stroke="black" stroke-width="2px"></circle>
+        <line   id="body"       x1="54" y1="84"  x2="54" y2="144"    stroke="black" stroke-width="2px"></line>
+        <line   id="left_hand"  x1="54" y1="96"  x2="38" y2="117"    stroke="black" stroke-width="2px"></line>
+        <line   id="right_hand" x1="54" y1="96"  x2="70" y2="117"    stroke="black" stroke-width="2px"></line>
+        <line   id="left_foot"  x1="54" y1="143" x2="38" y2="164"    stroke="black" stroke-width="2px"></line>
+        <line   id="right_foot" x1="54" y1="143" x2="70" y2="164"    stroke="black" stroke-width="2px"></line>
+    </svg>
     <script type="text/javascript" src="assets/javascript/hangman.js"></script>
 </body>
 </html>
