@@ -4,30 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Hangman</title>
 </head>
 <body>
-    <h1>Welcome to Hangman</h1>
-    <p>You must guess the word by typing keys on your key board</p>
-    <p id="word"></p>
-    <p id="guessed-letters"></p>
-    <h2 id="win-text"></h2>
-    <p id="win-score"></p>
-    <p id="lose-score"></p>
-    <p id="new-game-text"><p>
-    <svg width="150" height="250">
-        <line x1="7"   y1="220" x2="138" y2="220" stroke="black" stroke-width="10px"></line>
-        <line x1="120" y1="215" x2="120" y2="16"  stroke="black" stroke-width="10px"></line>
-        <line x1="51"  y1="21"  x2="115" y2="21"  stroke="black" stroke-width="10px"></line>
-        <line x1="54"  y1="23"  x2="54"  y2="52"  stroke="black" stroke-width="2px"></line>
     
-        <circle id="head"       cx="54" cy="69"  r="16"  fill="none" stroke="black" stroke-width="2px"></circle>
-        <line   id="body"       x1="54" y1="84"  x2="54" y2="144"    stroke="black" stroke-width="2px"></line>
-        <line   id="left_hand"  x1="54" y1="96"  x2="38" y2="117"    stroke="black" stroke-width="2px"></line>
-        <line   id="right_hand" x1="54" y1="96"  x2="70" y2="117"    stroke="black" stroke-width="2px"></line>
-        <line   id="left_foot"  x1="54" y1="143" x2="38" y2="164"    stroke="black" stroke-width="2px"></line>
-        <line   id="right_foot" x1="54" y1="143" x2="70" y2="164"    stroke="black" stroke-width="2px"></line>
-    </svg>
+
+    <section class="container">
+
+        <header class="row jumbotron">
+            <section class="col-xs-12">
+                    <h1>Welcome to Hangman</h1>
+            </section>
+        </header>
+
+        <section class="row">
+            <section class="col-xs-12">
+                    <p>You must guess the word by typing keys on your key board</p>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col-xs-12">
+                    <p id="word"></p>
+                    <p>guessed letters: <span id="guessed-letters"></span></p>
+            </section>
+        </section>
+
+        <section class="row">
+            <section class="col-xs-12">
+                    <h2 id="win-text"></h2>
+                    <p id="win-score"></p>
+            </section>
+        </section>
+
+        <section></section>
+
+        <section class="row">
+            <section class="col-xs-12">
+                    <p id="new-game-text"><p>
+            </section>
+        </section>
+      
+        <section class="row">
+            <section class="col-xs-12">
+                <svg width="150" height="250">
+                    <line x1="7"   y1="220" x2="138" y2="220" stroke="black" stroke-width="10px"></line>
+                    <line x1="120" y1="215" x2="120" y2="16"  stroke="black" stroke-width="10px"></line>
+                    <line x1="51"  y1="21"  x2="115" y2="21"  stroke="black" stroke-width="10px"></line>
+                    <line x1="54"  y1="23"  x2="54"  y2="52"  stroke="black" stroke-width="2px"></line>
+                
+                    <circle id="head"       cx="54" cy="69"  r="16"  fill="none" stroke="black" stroke-width="2px"></circle>
+                    <line   id="body"       x1="54" y1="84"  x2="54" y2="144"    stroke="black" stroke-width="2px"></line>
+                    <line   id="left_hand"  x1="54" y1="96"  x2="38" y2="117"    stroke="black" stroke-width="2px"></line>
+                    <line   id="right_hand" x1="54" y1="96"  x2="70" y2="117"    stroke="black" stroke-width="2px"></line>
+                    <line   id="left_foot"  x1="54" y1="143" x2="38" y2="164"    stroke="black" stroke-width="2px"></line>
+                    <line   id="right_foot" x1="54" y1="143" x2="70" y2="164"    stroke="black" stroke-width="2px"></line>
+                </svg>
+            </section>
+        </section>
+      
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/hangman.js"></script>
 </body>
 </html>

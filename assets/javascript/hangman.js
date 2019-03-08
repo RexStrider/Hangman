@@ -66,6 +66,7 @@ function initializeGame() {
     // re-initializes the game text on the main web page
     document.getElementById("guessed-letters").textContent = "";
     document.getElementById("win-text").textContent = "";
+    document.getElementById("win-score").textContent = "";
     document.getElementById("new-game-text").textContent = "";
 
     // makes the man invisible
@@ -107,7 +108,7 @@ document.addEventListener("keyup", event => {
 
                 // tally the win
                 wins++;
-                document.getElementById("win-score").textContent = "wins: " + wins;
+                document.getElementById("win-score").textContent = "your win total is " + wins;
 
                 // congratulate the user
                 document.getElementById("win-text").textContent = "Congratulations, you win!";
@@ -116,7 +117,7 @@ document.addEventListener("keyup", event => {
                 document.getElementById("new-game-text").textContent = "A new game will start in just a moment";
                 
                 // start the game in 5 seconds
-                intervalId = setInterval(initializeGame, 5 * 1000);
+                intervalId = setInterval(initializeGame, 6 * 1000);
             }
         } else if (wrongGuesses < 6) {
 
