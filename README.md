@@ -12,21 +12,9 @@ So make sure your sound is turned down low!
 
 There are currently only 11 words chosen at random.
 
-## Instructions
+If you'd like to play the game, then click the link below.
 
-To play the application, you will have to clone the repository, navigate to the root directory of this project, and open the index.html file in your browser.
-
-You will need [Git](https://git-scm.com/downloads) installed to clone the repo.
-
-Clone the repo by using one of the following commands,
-
-```
-// ssh
-git clone git@github.com:RexStrider/Hangman.git
-
-// https
-git clone https://github.com/RexStrider/Hangman.git
-```
+[Hangman](https://rexstrider.github.io/Hangman/)
 
 Enjoy!
 
