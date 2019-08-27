@@ -18,6 +18,18 @@ To play the application, you will have to clone the repository, navigate to the 
 
 You will need [Git](https://git-scm.com/downloads) installed to clone the repo.
 
+Clone the repo by using one of the following commands,
+
+```
+// ssh
+git@github.com:RexStrider/Hangman.git
+
+// https
+https://github.com/RexStrider/Hangman.git
+```
+
+Enjoy!
+
 ## Technology
 
  - JavaScript
