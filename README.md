@@ -22,10 +22,10 @@ Clone the repo by using one of the following commands,
 
 ```
 // ssh
-git@github.com:RexStrider/Hangman.git
+git clone git@github.com:RexStrider/Hangman.git
 
 // https
-https://github.com/RexStrider/Hangman.git
+git clone https://github.com/RexStrider/Hangman.git
 ```
 
 Enjoy!
