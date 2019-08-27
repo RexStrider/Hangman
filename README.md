@@ -20,6 +20,7 @@ Enjoy!
 
 ## Technology
 
+ - Bootstrap
  - JavaScript
  - HTML
  - CSS
